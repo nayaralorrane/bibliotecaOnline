@@ -1,0 +1,6 @@
+ports:
+  - port: 8080
+tasks:
+  - init: echo CREATE DATABASE biblioteca_online > start.sql
+    command: psql < start.sql && psql -d biblioteca_online < DDL.sql && rm start.sql
+image: gitpod/workspace-postgres
