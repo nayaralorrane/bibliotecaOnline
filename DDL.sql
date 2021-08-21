@@ -1,7 +1,7 @@
 CREATE TABLE "livro" (
   "id_livro" serial UNIQUE NOT NULL,
-  "fk_autor" int NOT NULL,
-  "fk_sessao" int NOT NULL,
+  "id_autor" int NOT NULL,
+  "id_sessao" int NOT NULL,
   "titulo" character varying,
   "editora" character varying,
   "preco" double precision NOT NULL DEFAULT 0
@@ -19,7 +19,7 @@ CREATE TABLE "categoria" (
 
 CREATE TABLE "sessao" (
   "id_sessao" serial UNIQUE NOT NULL,
-  "fk_biblioteca" int NOT NULL,
+  "id_biblioteca" int NOT NULL,
   "nome_sessao" character varying,
   "estante" int,
   "prateleira" int
@@ -37,7 +37,7 @@ CREATE TABLE "biblioteca" (
 
 CREATE TABLE "usuario" (
   "id_usuario" serial UNIQUE NOT NULL,
-  "fk_permissoes" int NOT NULL,
+  "id_permissoes" int NOT NULL,
   "nome" character varying,
   "email" character varying,
   "documento" character varying,
@@ -58,13 +58,13 @@ ALTER TABLE "livro_categoria" ADD CONSTRAINT "livro_categoria_relation" FOREIGN 
 
 ALTER TABLE "livro_categoria" ADD CONSTRAINT "categoria_livro" FOREIGN KEY ("id_categoria") REFERENCES "categoria" ("id_categoria");
 
-ALTER TABLE "livro" ADD CONSTRAINT "livro_autor" FOREIGN KEY ("fk_autor") REFERENCES "autor" ("id_autor");
+ALTER TABLE "livro" ADD CONSTRAINT "livro_autor" FOREIGN KEY ("id_autor") REFERENCES "autor" ("id_autor");
 
-ALTER TABLE "livro" ADD CONSTRAINT "livro_sessao" FOREIGN KEY ("fk_sessao") REFERENCES "sessao" ("id_sessao");
+ALTER TABLE "livro" ADD CONSTRAINT "livro_sessao" FOREIGN KEY ("id_sessao") REFERENCES "sessao" ("id_sessao");
 
-ALTER TABLE "sessao" ADD CONSTRAINT "sessao_biblioteca" FOREIGN KEY ("fk_biblioteca") REFERENCES "biblioteca" ("id_biblioteca");
+ALTER TABLE "sessao" ADD CONSTRAINT "sessao_biblioteca" FOREIGN KEY ("id_biblioteca") REFERENCES "biblioteca" ("id_biblioteca");
 
-ALTER TABLE "usuario" ADD CONSTRAINT "usuario_permissoes" FOREIGN KEY ("fk_permissoes") REFERENCES "permissoes" ("id_permissoes");
+ALTER TABLE "usuario" ADD CONSTRAINT "usuario_permissoes" FOREIGN KEY ("id_permissoes") REFERENCES "permissoes" ("id_permissoes");
 
 CREATE USER bobackend WITH PASSWORD '123456';
 GRANT ALL PRIVILEGES ON DATABASE biblioteca_online TO bobackend;

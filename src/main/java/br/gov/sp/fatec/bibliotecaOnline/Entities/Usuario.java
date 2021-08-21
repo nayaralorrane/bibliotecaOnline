@@ -6,7 +6,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManytoOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,8 +31,8 @@ public class Usuario {
     @Column(name = "senha", nullable = false)
     private String Senha;
 
-    @ManytoOne(fetch = FetchType.EAGER)
-    @JoinColumn(name= "fk_permissoes")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name= "id_permissoes")
     private Permissoes Permissao;
 
     public Usuario() {

@@ -1,5 +1,7 @@
 package br.gov.sp.fatec.bibliotecaOnline.Entities;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,7 +23,7 @@ public class Autor {
     @Column(name = "aut_nome")
     private String AutNome;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "autor")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "Autor")
     private Set<Livro> Livros;
 
     public Autor (){

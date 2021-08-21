@@ -1,5 +1,7 @@
 package br.gov.sp.fatec.bibliotecaOnline.Entities;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -46,7 +48,7 @@ public class Permissoes {
     }
 
     public String GetNomePermissao (){
-        return this.NomePermissoes;
+        return this.NomePermissao;
     }
 
     public void SetNomePermissao (String nome) {

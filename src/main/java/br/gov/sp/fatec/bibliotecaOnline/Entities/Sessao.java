@@ -1,11 +1,15 @@
 package br.gov.sp.fatec.bibliotecaOnline.Entities;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,11 +31,11 @@ public class Sessao {
     @Column(name = "prateleira")
     private Integer Prateleira;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "sessao")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "Sessao")
     private Set<Livro> Livros;
 
-    @ManytoOne(fetch = FetchType.EAGER)
-    @JoinColumn(name= "fk_biblioteca")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name= "id_biblioteca")
     private Biblioteca Biblioteca;
 
 
@@ -48,11 +52,11 @@ public class Sessao {
     }
 
     public Set<Livro> GetSessao() {
-        return this.Sessao;
+        return this.Livros;
     }
 
-    public void SetLivros(Set<Livro> sessao) {
-        this.Sessao = sessao;
+    public void SetLivros(Set<Livro> livros) {
+        this.Livros = livros;
     }
 
     public Integer GetIdSessao (){

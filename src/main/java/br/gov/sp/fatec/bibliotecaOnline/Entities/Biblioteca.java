@@ -1,5 +1,7 @@
 package br.gov.sp.fatec.bibliotecaOnline.Entities;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -48,7 +50,7 @@ public class Biblioteca {
         return this.Sessoes;
     }
 
-    public void SetSessoes(Sessoes sessoes){
+    public void SetSessoes(Set<Sessao> sessoes){
         this.Sessoes =  sessoes;
     }
 
@@ -81,7 +83,7 @@ public class Biblioteca {
     }
 
     public void SetEndereco (String endereco) {
-        this.Endereco = endereço;
+        this.Endereco = endereco;
     }
 
     public String GetCidade (){
@@ -89,7 +91,7 @@ public class Biblioteca {
     }
 
     public void SetCidade (String cidade) {
-        this.Cidade = ecidadendereço;
+        this.Cidade = cidade;
     }
 
     public Integer GetNumero (){

@@ -1,12 +1,16 @@
 package br.gov.sp.fatec.bibliotecaOnline.Entities;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,15 +31,15 @@ public class Livro {
     @Column(name = "preco")
     private Float Preco;
 
-    @ManytoOne(fetch = FetchType.EAGER)
-    @JoinColumn(name= "fk_autor")
-    private Autor autor;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name= "id_autor")
+    private Autor Autor;
 
-    @ManytoOne(fetch = FetchType.EAGER)
-    @JoinColumn(name= "fk_sessao")
-    private Sessao sessao;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name= "id_sessao")
+    private Sessao Sessao;
 
-    @ManytoMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "livro_categoria", 
         joinColumns = {@JoinColumn(name = "id_livro")},
         inverseJoinColumns = {@JoinColumn(name = "id_categoria")})
@@ -64,7 +68,7 @@ public class Livro {
         this.Sessao =  sessao;
     }
 
-    public Permissoes GetAutor (){
+    public Autor GetAutor (){
         return this.Autor;
     }
 
