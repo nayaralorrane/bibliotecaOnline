@@ -51,6 +51,13 @@ public class Livro {
 
     }
 
+    public Livro (String nomeTitulo, String editora, Float preco){
+        this.NomeTitulo = nomeTitulo;
+        this.Editora = editora;
+        this.Preco = preco;
+    }
+
+
     public Set<Categoria> GetCategorias (){
         return this.Categorias;
     }
