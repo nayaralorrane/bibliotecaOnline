@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import br.gov.sp.fatec.bibliotecaOnline.Entities.Usuario;
 import br.gov.sp.fatec.bibliotecaOnline.Entities.Permissoes;
 import br.gov.sp.fatec.bibliotecaOnline.Respositories.UsuarioRepository;
+import br.gov.sp.fatec.bibliotecaOnline.Respositories.PermissoesRepository;
 
 @Service("usuarioService")
 public class UsuarioServiceImpl implements UsuarioService{
