@@ -18,13 +18,13 @@ public class Permissoes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_permissoes")
-    private Integer IdPermissoes;
+    private Integer idPermissoes;
 
     @Column(name = "nome_permissao")
-    private String NomePermissao;
+    private String nomePermissao;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "Permissao")
-    private Set<Usuario> Usuarios;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "permissao")
+    private Set<Usuario> usuarios;
 
 
     public Permissoes (){
@@ -32,26 +32,26 @@ public class Permissoes {
     }
 
     public Set<Usuario> GetUsuarios() {
-        return this.Usuarios;
+        return this.usuarios;
     }
 
     public void SetUsuarios(Set<Usuario> usuarios) {
-        this.Usuarios = usuarios;
+        this.usuarios = usuarios;
     }
 
     public Integer GetIdPermissoes (){
-        return this.IdPermissoes;
+        return this.idPermissoes;
     }
 
     public void SetIdPermissoes (Integer id){
-        this.IdPermissoes = id;
+        this.idPermissoes = id;
     }
 
     public String GetNomePermissao (){
-        return this.NomePermissao;
+        return this.nomePermissao;
     }
 
     public void SetNomePermissao (String nome) {
-        this.NomePermissao = nome;
+        this.nomePermissao = nome;
     }
 }

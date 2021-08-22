@@ -36,7 +36,7 @@ public class LivroServiceImpl implements LivroService{
 
     @Override
     @Transactional
-    public Livro createLivro(String nomeTitulo, String editora, Float preco, String autor, String sessao, List<String> categorias) {
+    public Livro createLivro(String nomeTitulo, String editora, Double preco, String autor, String sessao, List<String> categorias) {
         HashSet<Categoria> listaCategorias = new HashSet<Categoria>();
         for (String categoria : categorias) {
             Categoria categoriaEscolhida = categoriaRepository.findByNomeCategoria(categoria);
@@ -76,7 +76,7 @@ public class LivroServiceImpl implements LivroService{
     }
 
     @Override
-    public Livro updateLivro(Integer id, String nomeTitulo, String editora, Float preco) {
+    public Livro updateLivro(Integer id, String nomeTitulo, String editora, Double preco) {
         Livro livro = livroRepository.findById(id).get();
         livro.SetNomeTitulo(nomeTitulo);
         livro.SetEditora(editora);

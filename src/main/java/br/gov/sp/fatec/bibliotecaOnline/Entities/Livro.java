@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,30 +21,30 @@ public class Livro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_livro")
-    private Integer IdLivro;
+    private Integer idLivro;
 
     @Column(name = "titulo")
-    private String NomeTitulo;
+    private String nomeTitulo;
 
     @Column(name = "editora")
-    private String Editora;
+    private String editora;
 
     @Column(name = "preco")
-    private Float Preco;
+    private Double preco;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name= "id_autor")
-    private Autor Autor;
+    private Autor autor;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name= "id_sessao")
-    private Sessao Sessao;
+    private Sessao sessao;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "livro_categoria", 
         joinColumns = {@JoinColumn(name = "id_livro")},
         inverseJoinColumns = {@JoinColumn(name = "id_categoria")})
-    private Set<Categoria> Categorias;
+    private Set<Categoria> categorias;
 
 
 
@@ -51,68 +52,68 @@ public class Livro {
 
     }
 
-    public Livro (String nomeTitulo, String editora, Float preco){
-        this.NomeTitulo = nomeTitulo;
-        this.Editora = editora;
-        this.Preco = preco;
+    public Livro (String nomeTitulo, String editora, Double preco){
+        this.nomeTitulo = nomeTitulo;
+        this.editora = editora;
+        this.preco = preco;
     }
 
 
     public Set<Categoria> GetCategorias (){
-        return this.Categorias;
+        return this.categorias;
     }
 
     public void SetCategorias(Set<Categoria> categorias){
-        this.Categorias =  categorias;
+        this.categorias =  categorias;
     }
 
 
     public Sessao GetSessao (){
-        return this.Sessao;
+        return this.sessao;
     }
 
     public void SetSessao(Sessao sessao){
-        this.Sessao =  sessao;
+        this.sessao =  sessao;
     }
 
     public Autor GetAutor (){
-        return this.Autor;
+        return this.autor;
     }
 
     public void SetAutor(Autor autor){
-        this.Autor =  autor;
+        this.autor =  autor;
     }
 
     public Integer GetIdLivro (){
-        return this.IdLivro;
+        return this.idLivro;
     }
 
     public void SetIdLivro (Integer id){
-        this.IdLivro = id;
+        this.idLivro = id;
     }
 
     public String GetNomeTitulo (){
-        return this.NomeTitulo;
+        return this.nomeTitulo;
     }
 
     public void SetNomeTitulo (String titulo) {
-        this.NomeTitulo = titulo;
+        this.nomeTitulo = titulo;
     }
 
     public String GetEditora (){
-        return this.Editora;
+        return this.editora;
     }
 
     public void SetEditora (String editora) {
-        this.Editora = editora;
+        this.editora = editora;
     }
 
-    public Float GetPreco (){
-        return this.Preco;
+    public Double GetPreco (){
+        return this.preco;
     }
 
-    public void SetPreco (Float preco) {
-        this.Preco = preco;
+    public void SetPreco (Double preco) {
+        this.preco = preco;
     }
 
 

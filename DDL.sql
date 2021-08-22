@@ -68,6 +68,8 @@ ALTER TABLE "usuario" ADD CONSTRAINT "usuario_permissoes" FOREIGN KEY ("id_permi
 
 CREATE USER bobackend WITH PASSWORD '123456';
 GRANT ALL PRIVILEGES ON DATABASE biblioteca_online TO bobackend;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO bobackend;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO bobackend;
 
 INSERT INTO permissoes(nome_permissao) 
 VALUES('Funcionário'), ('Cliente');

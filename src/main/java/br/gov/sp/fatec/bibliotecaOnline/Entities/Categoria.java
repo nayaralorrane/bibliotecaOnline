@@ -18,41 +18,41 @@ public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_categoria")
-    private Integer IdCategoria;
+    private Integer idCategoria;
 
     @Column(name = "nome_categoria")
-    private String NomeCategoria;
+    private String nomeCategoria;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "Categorias")
-    private Set<Livro> Livros;
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "categorias")
+    private Set<Livro> livros;
 
     public Categoria(){
 
     }
 
     public Set<Livro> GetLivros(){
-        return this.Livros;
+        return this.livros;
     }
 
     public void SetLivros (Set<Livro> livros){
-        this.Livros = livros;
+        this.livros = livros;
     }
 
 
 
     public Integer GetIdCategoria (){
-        return this.IdCategoria;
+        return this.idCategoria;
     }
 
     public void SetIdCategoria (Integer id){
-        this.IdCategoria = id;
+        this.idCategoria = id;
     }
 
     public String GetNomeCategoria (){
-        return this.NomeCategoria;
+        return this.nomeCategoria;
     }
 
     public void SetNomeCategoria (String nomeCategoria) {
-        this.NomeCategoria = nomeCategoria;
+        this.nomeCategoria = nomeCategoria;
     }
 }

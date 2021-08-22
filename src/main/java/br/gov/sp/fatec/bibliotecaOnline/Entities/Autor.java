@@ -18,40 +18,40 @@ public class Autor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_autor")
-    private Integer IdAutor;
+    private Integer idAutor;
 
     @Column(name = "aut_nome")
-    private String AutNome;
+    private String autNome;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "Autor")
-    private Set<Livro> Livros;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "autor")
+    private Set<Livro> livros;
 
     public Autor (){
 
     }
 
     public Set<Livro> GetLivros() {
-        return this.Livros;
+        return this.livros;
     }
 
     public void SetLivros(Set<Livro> livros) {
-        this.Livros = livros;
+        this.livros = livros;
     }
 
 
     public Integer GetIdAutor (){
-        return this.IdAutor;
+        return this.idAutor;
     }
 
     public void SetIdAutor (Integer id){
-        this.IdAutor = id;
+        this.idAutor = id;
     }
 
     public String GetAutNome (){
-        return this.AutNome;
+        return this.autNome;
     }
 
     public void SetAutNome (String autNome) {
-        this.AutNome = autNome;
+        this.autNome = autNome;
     }
 }

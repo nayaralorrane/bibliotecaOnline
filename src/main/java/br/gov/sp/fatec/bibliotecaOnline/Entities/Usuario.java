@@ -17,80 +17,80 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
-    private Integer IdUsuario;
+    private Integer idUsuario;
 
     @Column(name = "nome")
-    private String Nome;
+    private String nome;
 
     @Column(name = "email", nullable = false)
-    private String Email;
+    private String email;
 
     @Column(name = "documento")
-    private String Documento;
+    private String documento;
 
     @Column(name = "senha", nullable = false)
-    private String Senha;
+    private String senha;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name= "id_permissoes")
-    private Permissoes Permissao;
+    private Permissoes permissao;
 
     public Usuario() {
         
     }
 
     public Usuario(String nome, String email, String documento, String senha) {
-        this.Nome = nome;
-        this.Email = email;
-        this.Documento = documento;
-        this.Senha = senha;
+        this.nome = nome;
+        this.email = email;
+        this.documento = documento;
+        this.senha = senha;
     }
 
     public Permissoes GetPermissao (){
-        return this.Permissao;
+        return this.permissao;
     }
 
     public void SetPermissao(Permissoes permissao){
-        this.Permissao =  permissao;
+        this.permissao =  permissao;
     }
 
     public Integer GetIdUsuario() {
-        return this.IdUsuario;
+        return this.idUsuario;
     }
 
     public void SetIdUsuario(Integer Id) {
-        this.IdUsuario = Id;
+        this.idUsuario = Id;
     }
 
     public String GetNome() {
-        return this.Nome;
+        return this.nome;
     }
 
     public void SetNome(String Nome) {
-        this.Nome = Nome;
+        this.nome = Nome;
     }
 
     public String GetEmail() {
-        return this.Email;
+        return this.email;
     }
 
     public void SetEmail(String Email) {
-        this.Email = Email;
+        this.email = Email;
     }
 
     public String GetDocumento() {
-        return this.Documento;
+        return this.documento;
     }
 
     public void SetDocumento(String Documento) {
-        this.Documento = Documento;
+        this.documento = Documento;
     }
 
     public String GetSenha() {
-        return this.Senha;
+        return this.senha;
     }
 
     public void SetSenha(String Senha) {
-        this.Senha = Senha;
+        this.senha = Senha;
     }
 }

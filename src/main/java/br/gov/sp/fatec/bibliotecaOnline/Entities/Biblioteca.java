@@ -18,28 +18,28 @@ public class Biblioteca {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_biblioteca")
-    private Integer IdBiblioteca;
+    private Integer idBiblioteca;
 
     @Column(name = "nome_biblioteca")
-    private String NomeBiblioteca;
+    private String nomeBiblioteca;
 
     @Column(name = "cnpj")
-    private String Cnpj;
+    private String cnpj;
 
     @Column(name = "endereco")
-    private String Endereco;
+    private String endereco;
 
     @Column(name = "numero")
-    private Integer Numero;
+    private Integer numero;
 
     @Column(name = "cidade")
-    private String Cidade;
+    private String cidade;
 
     @Column(name = "estado")
-    private String Estado;
+    private String estado;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "Biblioteca")
-    private Set<Sessao> Sessoes;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "biblioteca")
+    private Set<Sessao> sessoes;
 
 
     public Biblioteca (){
@@ -47,67 +47,67 @@ public class Biblioteca {
     }
 
     public Set<Sessao> GetSessoes (){
-        return this.Sessoes;
+        return this.sessoes;
     }
 
     public void SetSessoes(Set<Sessao> sessoes){
-        this.Sessoes =  sessoes;
+        this.sessoes =  sessoes;
     }
 
     public Integer GetIdBiblioteca (){
-        return this.IdBiblioteca;
+        return this.idBiblioteca;
     }
 
     public void SetIdBiblioteca (Integer id){
-        this.IdBiblioteca = id;
+        this.idBiblioteca = id;
     }
 
     public String GetNomeBiblioteca (){
-        return this.NomeBiblioteca;
+        return this.nomeBiblioteca;
     }
 
     public void SetNomeBiblioteca (String nome) {
-        this.NomeBiblioteca = nome;
+        this.nomeBiblioteca = nome;
     }
 
     public String GetCnpj (){
-        return this.Cnpj;
+        return this.cnpj;
     }
 
     public void SetCnpj (String cnpj) {
-        this.Cnpj = cnpj;
+        this.cnpj = cnpj;
     }
 
     public String GetEndereco (){
-        return this.Endereco;
+        return this.endereco;
     }
 
     public void SetEndereco (String endereco) {
-        this.Endereco = endereco;
+        this.endereco = endereco;
     }
 
     public String GetCidade (){
-        return this.Cidade;
+        return this.cidade;
     }
 
     public void SetCidade (String cidade) {
-        this.Cidade = cidade;
+        this.cidade = cidade;
     }
 
     public Integer GetNumero (){
-        return this.Numero;
+        return this.numero;
     }
 
     public void SetNumero (Integer numero) {
-        this.Numero = numero;
+        this.numero = numero;
     }
 
     public String GetEstado (){
-        return this.Estado;
+        return this.estado;
     }
 
     public void SetEstado (String estado) {
-        this.Estado = estado;
+        this.estado = estado;
     }
 
     
