@@ -9,12 +9,12 @@ CREATE TABLE "livro" (
 
 CREATE TABLE "autor" (
   "id_autor" serial UNIQUE NOT NULL,
-  "nome" character varying
+  "aut_nome" character varying
 );
 
 CREATE TABLE "categoria" (
   "id_categoria" serial UNIQUE NOT NULL,
-  "nome" character varying
+  "nome_categoria" character varying
 );
 
 CREATE TABLE "sessao" (
@@ -68,3 +68,18 @@ ALTER TABLE "usuario" ADD CONSTRAINT "usuario_permissoes" FOREIGN KEY ("id_permi
 
 CREATE USER bobackend WITH PASSWORD '123456';
 GRANT ALL PRIVILEGES ON DATABASE biblioteca_online TO bobackend;
+
+INSERT INTO permissoes(nome_permissao) 
+VALUES('Funcionário'), ('Cliente');
+
+INSERT INTO biblioteca(nome_biblioteca, cnpj, endereco, numero, cidade, estado)
+VALUES('Saraiva','00.000.000/0001-00','Avenida', 2, 'Jambeiro', 'São Paulo');
+
+INSERT INTO sessao(nome_sessao, estante, prateleira, id_biblioteca)
+VALUES('A', '1', 1, 1);
+
+INSERT INTO autor(aut_nome)
+VALUES('Nayara');
+
+INSERT INTO livro(titulo, editora, preco, id_autor, id_sessao)
+VALUES('Kiara Aventureira', 'Lorrane', 120.00, 1, 1);

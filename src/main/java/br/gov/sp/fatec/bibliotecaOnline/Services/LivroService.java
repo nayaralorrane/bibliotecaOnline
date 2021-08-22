@@ -8,4 +8,5 @@ public interface LivroService {
     public Livro readLivro(Integer id);
     public Livro updateLivro(Integer id, String nomeTitulo, String editora, Float preco);
     public Boolean deleteLivro(Integer id);
+    public List<Livro> getByAutorAndSessao(Integer idAutor, Integer idSessao);
 }

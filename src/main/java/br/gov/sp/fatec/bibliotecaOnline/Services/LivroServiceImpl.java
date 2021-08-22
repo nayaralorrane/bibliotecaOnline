@@ -92,5 +92,10 @@ public class LivroServiceImpl implements LivroService{
         if(livro == null) return true;
         return false;
     }
+
+    @Override
+    public List<Livro> getByAutorAndSessao(Integer idAutor, Integer idSessao){
+        return livroRepository.findAllByAutorAndSessao(idAutor, idSessao);
+    }
     
 }
