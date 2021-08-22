@@ -36,7 +36,14 @@ public class Usuario {
     private Permissoes Permissao;
 
     public Usuario() {
+        
+    }
 
+    public Usuario(String nome, String email, String documento, String senha) {
+        this.Nome = nome;
+        this.Email = email;
+        this.Documento = documento;
+        this.Senha = senha;
     }
 
     public Permissoes GetPermissao (){
