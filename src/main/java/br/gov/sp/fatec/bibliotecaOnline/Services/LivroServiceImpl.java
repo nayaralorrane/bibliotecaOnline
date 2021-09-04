@@ -97,5 +97,10 @@ public class LivroServiceImpl implements LivroService{
     public List<Livro> getByAutorAndSessao(Integer idAutor, Integer idSessao){
         return livroRepository.findAllByAutorAndSessao(idAutor, idSessao);
     }
+
+    @Override
+    public List<Livro> getAllLivro() {
+        return livroRepository.findAll();
+    }
     
 }
