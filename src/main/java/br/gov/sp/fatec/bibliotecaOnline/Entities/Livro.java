@@ -58,64 +58,60 @@ public class Livro {
         this.preco = preco;
     }
 
-
-    public Set<Categoria> GetCategorias (){
-        return this.categorias;
+    public Integer getIdLivro() {
+        return idLivro;
     }
 
-    public void SetCategorias(Set<Categoria> categorias){
-        this.categorias =  categorias;
+    public void setIdLivro(Integer idLivro) {
+        this.idLivro = idLivro;
     }
 
-
-    public Sessao GetSessao (){
-        return this.sessao;
+    public String getNomeTitulo() {
+        return nomeTitulo;
     }
 
-    public void SetSessao(Sessao sessao){
-        this.sessao =  sessao;
+    public void setNomeTitulo(String nomeTitulo) {
+        this.nomeTitulo = nomeTitulo;
     }
 
-    public Autor GetAutor (){
-        return this.autor;
+    public String getEditora() {
+        return editora;
     }
 
-    public void SetAutor(Autor autor){
-        this.autor =  autor;
-    }
-
-    public Integer GetIdLivro (){
-        return this.idLivro;
-    }
-
-    public void SetIdLivro (Integer id){
-        this.idLivro = id;
-    }
-
-    public String GetNomeTitulo (){
-        return this.nomeTitulo;
-    }
-
-    public void SetNomeTitulo (String titulo) {
-        this.nomeTitulo = titulo;
-    }
-
-    public String GetEditora (){
-        return this.editora;
-    }
-
-    public void SetEditora (String editora) {
+    public void setEditora(String editora) {
         this.editora = editora;
     }
 
-    public Double GetPreco (){
-        return this.preco;
+    public Double getPreco() {
+        return preco;
     }
 
-    public void SetPreco (Double preco) {
+    public void setPreco(Double preco) {
         this.preco = preco;
     }
 
+    public Autor getAutor() {
+        return autor;
+    }
 
+    public void setAutor(Autor autor) {
+        this.autor = autor;
+    }
+
+    public Sessao getSessao() {
+        return sessao;
+    }
+
+    public void setSessao(Sessao sessao) {
+        this.sessao = sessao;
+    }
+
+    public Set<Categoria> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(Set<Categoria> categorias) {
+        this.categorias = categorias;
+    }
     
 }

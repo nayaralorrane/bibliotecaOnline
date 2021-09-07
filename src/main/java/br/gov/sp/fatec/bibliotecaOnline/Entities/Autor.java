@@ -30,28 +30,29 @@ public class Autor {
 
     }
 
-    public Set<Livro> GetLivros() {
-        return this.livros;
+    public Integer getIdAutor() {
+        return idAutor;
     }
 
-    public void SetLivros(Set<Livro> livros) {
+    public void setIdAutor(Integer idAutor) {
+        this.idAutor = idAutor;
+    }
+
+    public String getAutNome() {
+        return autNome;
+    }
+
+    public void setAutNome(String autNome) {
+        this.autNome = autNome;
+    }
+
+    public Set<Livro> getLivros() {
+        return livros;
+    }
+
+    public void setLivros(Set<Livro> livros) {
         this.livros = livros;
     }
 
-
-    public Integer GetIdAutor (){
-        return this.idAutor;
-    }
-
-    public void SetIdAutor (Integer id){
-        this.idAutor = id;
-    }
-
-    public String GetAutNome (){
-        return this.autNome;
-    }
-
-    public void SetAutNome (String autNome) {
-        this.autNome = autNome;
-    }
 }
+

@@ -31,27 +31,34 @@ public class Permissoes {
 
     }
 
-    public Set<Usuario> GetUsuarios() {
-        return this.usuarios;
+
+    public Integer getIdPermissoes() {
+        return idPermissoes;
     }
 
-    public void SetUsuarios(Set<Usuario> usuarios) {
+
+    public void setIdPermissoes(Integer idPermissoes) {
+        this.idPermissoes = idPermissoes;
+    }
+
+
+    public String getNomePermissao() {
+        return nomePermissao;
+    }
+
+
+    public void setNomePermissao(String nomePermissao) {
+        this.nomePermissao = nomePermissao;
+    }
+
+
+    public Set<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+
+    public void setUsuarios(Set<Usuario> usuarios) {
         this.usuarios = usuarios;
     }
-
-    public Integer GetIdPermissoes (){
-        return this.idPermissoes;
-    }
-
-    public void SetIdPermissoes (Integer id){
-        this.idPermissoes = id;
-    }
-
-    public String GetNomePermissao (){
-        return this.nomePermissao;
-    }
-
-    public void SetNomePermissao (String nome) {
-        this.nomePermissao = nome;
-    }
+    
 }

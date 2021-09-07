@@ -30,29 +30,28 @@ public class Categoria {
 
     }
 
-    public Set<Livro> GetLivros(){
-        return this.livros;
+    public Integer getIdCategoria() {
+        return idCategoria;
     }
 
-    public void SetLivros (Set<Livro> livros){
+    public void setIdCategoria(Integer idCategoria) {
+        this.idCategoria = idCategoria;
+    }
+
+    public String getNomeCategoria() {
+        return nomeCategoria;
+    }
+
+    public void setNomeCategoria(String nomeCategoria) {
+        this.nomeCategoria = nomeCategoria;
+    }
+
+    public Set<Livro> getLivros() {
+        return livros;
+    }
+
+    public void setLivros(Set<Livro> livros) {
         this.livros = livros;
     }
 
-
-
-    public Integer GetIdCategoria (){
-        return this.idCategoria;
-    }
-
-    public void SetIdCategoria (Integer id){
-        this.idCategoria = id;
-    }
-
-    public String GetNomeCategoria (){
-        return this.nomeCategoria;
-    }
-
-    public void SetNomeCategoria (String nomeCategoria) {
-        this.nomeCategoria = nomeCategoria;
-    }
 }

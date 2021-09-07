@@ -43,51 +43,64 @@ public class Sessao {
 
     }
 
-    public Biblioteca GetBiblioteca() {
-        return this.biblioteca;
+
+    public Integer getIdSessao() {
+        return idSessao;
     }
 
-    public void SetBiblioteca(Biblioteca biblioteca) {
-        this.biblioteca = biblioteca;
+
+    public void setIdSessao(Integer idSessao) {
+        this.idSessao = idSessao;
     }
 
-    public Set<Livro> GetSessao() {
-        return this.livros;
+
+    public String getNomeSessao() {
+        return nomeSessao;
     }
 
-    public void SetLivros(Set<Livro> livros) {
-        this.livros = livros;
+
+    public void setNomeSessao(String nomeSessao) {
+        this.nomeSessao = nomeSessao;
     }
 
-    public Integer GetIdSessao (){
-        return this.idSessao;
+
+    public Integer getEstante() {
+        return estante;
     }
 
-    public void SetIdSessao (Integer id){
-        this.idSessao = id;
-    }
 
-    public String GetNomeSessao (){
-        return this.nomeSessao;
-    }
-
-    public void SetNomeSessao (String nome) {
-        this.nomeSessao = nome;
-    }
-
-    public Integer GetEstante (){
-        return this.estante;
-    }
-
-    public void SetEstante (Integer estante) {
+    public void setEstante(Integer estante) {
         this.estante = estante;
     }
 
-    public Integer GetPrateleira (){
-        return this.prateleira;
+
+    public Integer getPrateleira() {
+        return prateleira;
     }
 
-    public void SetPrateleira (Integer prateleira) {
+
+    public void setPrateleira(Integer prateleira) {
         this.prateleira = prateleira;
     }
+
+
+    public Set<Livro> getLivros() {
+        return livros;
+    }
+
+
+    public void setLivros(Set<Livro> livros) {
+        this.livros = livros;
+    }
+
+
+    public Biblioteca getBiblioteca() {
+        return biblioteca;
+    }
+
+
+    public void setBiblioteca(Biblioteca biblioteca) {
+        this.biblioteca = biblioteca;
+    }
+
 }

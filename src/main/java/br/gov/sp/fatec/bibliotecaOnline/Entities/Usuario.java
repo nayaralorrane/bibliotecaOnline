@@ -46,51 +46,52 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public Permissoes GetPermissao (){
-        return this.permissao;
+    public Integer getIdUsuario() {
+        return idUsuario;
     }
 
-    public void SetPermissao(Permissoes permissao){
-        this.permissao =  permissao;
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public Integer GetIdUsuario() {
-        return this.idUsuario;
+    public String getNome() {
+        return nome;
     }
 
-    public void SetIdUsuario(Integer Id) {
-        this.idUsuario = Id;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String GetNome() {
-        return this.nome;
+    public String getEmail() {
+        return email;
     }
 
-    public void SetNome(String Nome) {
-        this.nome = Nome;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String GetEmail() {
-        return this.email;
+    public String getDocumento() {
+        return documento;
     }
 
-    public void SetEmail(String Email) {
-        this.email = Email;
+    public void setDocumento(String documento) {
+        this.documento = documento;
     }
 
-    public String GetDocumento() {
-        return this.documento;
+    public String getSenha() {
+        return senha;
     }
 
-    public void SetDocumento(String Documento) {
-        this.documento = Documento;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
-    public String GetSenha() {
-        return this.senha;
+    public Permissoes getPermissao() {
+        return permissao;
     }
 
-    public void SetSenha(String Senha) {
-        this.senha = Senha;
+    public void setPermissao(Permissoes permissao) {
+        this.permissao = permissao;
     }
+
 }

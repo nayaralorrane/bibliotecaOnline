@@ -46,69 +46,84 @@ public class Biblioteca {
 
     }
 
-    public Set<Sessao> GetSessoes (){
-        return this.sessoes;
+
+    public Integer getIdBiblioteca() {
+        return idBiblioteca;
     }
 
-    public void SetSessoes(Set<Sessao> sessoes){
-        this.sessoes =  sessoes;
+
+    public void setIdBiblioteca(Integer idBiblioteca) {
+        this.idBiblioteca = idBiblioteca;
     }
 
-    public Integer GetIdBiblioteca (){
-        return this.idBiblioteca;
+
+    public String getNomeBiblioteca() {
+        return nomeBiblioteca;
     }
 
-    public void SetIdBiblioteca (Integer id){
-        this.idBiblioteca = id;
+
+    public void setNomeBiblioteca(String nomeBiblioteca) {
+        this.nomeBiblioteca = nomeBiblioteca;
     }
 
-    public String GetNomeBiblioteca (){
-        return this.nomeBiblioteca;
+
+    public String getCnpj() {
+        return cnpj;
     }
 
-    public void SetNomeBiblioteca (String nome) {
-        this.nomeBiblioteca = nome;
-    }
 
-    public String GetCnpj (){
-        return this.cnpj;
-    }
-
-    public void SetCnpj (String cnpj) {
+    public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
 
-    public String GetEndereco (){
-        return this.endereco;
+
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void SetEndereco (String endereco) {
+
+    public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
 
-    public String GetCidade (){
-        return this.cidade;
+
+    public Integer getNumero() {
+        return numero;
     }
 
-    public void SetCidade (String cidade) {
-        this.cidade = cidade;
-    }
 
-    public Integer GetNumero (){
-        return this.numero;
-    }
-
-    public void SetNumero (Integer numero) {
+    public void setNumero(Integer numero) {
         this.numero = numero;
     }
 
-    public String GetEstado (){
-        return this.estado;
+
+    public String getCidade() {
+        return cidade;
     }
 
-    public void SetEstado (String estado) {
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+
+    public String getEstado() {
+        return estado;
+    }
+
+
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
+
+    public Set<Sessao> getSessoes() {
+        return sessoes;
+    }
+
+
+    public void setSessoes(Set<Sessao> sessoes) {
+        this.sessoes = sessoes;
+    }
     
 }

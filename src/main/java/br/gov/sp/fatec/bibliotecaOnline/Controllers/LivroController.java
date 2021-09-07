@@ -1,6 +1,11 @@
 package br.gov.sp.fatec.bibliotecaOnline.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,15 +22,17 @@ import br.gov.sp.fatec.bibliotecaOnline.Entities.RequestModels.LivroRequest;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping(value = "/livro")
 public class LivroController{
 
     @Autowired
     private LivroService livroService;
 
-    @PostMapping(value = "/register")
+    @PostMapping(value = "/register", consumes = MediaType.ALL_VALUE)
     public Livro CreateLivro(@RequestBody LivroRequest request){
-        return livroService.createLivro(request.GetLivro().GetNomeTitulo(), request.GetLivro().GetEditora(), request.GetLivro().GetPreco(), request.GetAutor().GetAutNome(), request.GetSessao().GetNomeSessao(), request.GetCategorias());
+       return livroService.createLivro(request.getLivro().getNomeTitulo(), request.getLivro().getEditora(), request.getLivro().getPreco(), request.getAutor().getAutNome(), request.getSessao().getNomeSessao(), request.getCategorias());
+        
     }
 
     @GetMapping(value = "/")
