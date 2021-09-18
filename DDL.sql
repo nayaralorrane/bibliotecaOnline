@@ -85,3 +85,9 @@ VALUES('Nayara');
 
 INSERT INTO livro(titulo, editora, preco, id_autor, id_sessao)
 VALUES('Kiara Aventureira', 'Lorrane', 120.00, 1, 1);
+
+INSERT INTO categoria(nome_categoria)
+VALUES ('Comédia'), ('Mistério');
+
+INSERT INTO livro_categoria(id_livro, id_categoria)
+VALUES (1,1), (1,2);

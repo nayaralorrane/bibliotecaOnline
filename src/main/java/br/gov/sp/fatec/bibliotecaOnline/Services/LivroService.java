@@ -4,7 +4,7 @@ import br.gov.sp.fatec.bibliotecaOnline.Entities.Livro;
 import java.util.List;
 
 public interface LivroService {
-    public Livro createLivro(String nomeTitulo, String editora, Double preco, String autor, String sessao, List<String> categorias);
+    public Livro createLivro(String nomeTitulo, String editora, Double preco, String autor, String sessao, Integer idBiblioteca , List<String> categorias);
     public Livro readLivro(Integer id);
     public Livro updateLivro(Integer id, String nomeTitulo, String editora, Double preco);
     public Boolean deleteLivro(Integer id);

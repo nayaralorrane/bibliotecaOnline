@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "autor")
 public class Autor {
@@ -18,16 +20,23 @@ public class Autor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_autor")
+    @JsonView({ View.LivroCompleto.class, View.AutorResumo.class })
     private Integer idAutor;
 
     @Column(name = "aut_nome")
+    @JsonView({ View.LivroCompleto.class, View.AutorResumo.class })
     private String autNome;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "autor")
+    @JsonView(View.AutorCompleto.class)
     private Set<Livro> livros;
 
     public Autor (){
 
+    }
+
+    public Autor (String autNome){
+        this.autNome = autNome;
     }
 
     public Integer getIdAutor() {

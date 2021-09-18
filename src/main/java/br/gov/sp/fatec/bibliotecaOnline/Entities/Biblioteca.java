@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "biblioteca")
 public class Biblioteca {
@@ -18,24 +20,31 @@ public class Biblioteca {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_biblioteca")
+    @JsonView({ View.LivroCompleto.class, View.AutorCompleto.class })
     private Integer idBiblioteca;
 
     @Column(name = "nome_biblioteca")
+    @JsonView({ View.LivroCompleto.class, View.AutorCompleto.class })
     private String nomeBiblioteca;
 
     @Column(name = "cnpj")
+    @JsonView({ View.LivroCompleto.class, View.AutorCompleto.class })
     private String cnpj;
 
     @Column(name = "endereco")
+    @JsonView({ View.LivroCompleto.class, View.AutorCompleto.class })
     private String endereco;
 
     @Column(name = "numero")
+    @JsonView({ View.LivroCompleto.class, View.AutorCompleto.class })
     private Integer numero;
 
     @Column(name = "cidade")
+    @JsonView({ View.LivroCompleto.class, View.AutorCompleto.class })
     private String cidade;
 
     @Column(name = "estado")
+    @JsonView({ View.LivroCompleto.class, View.AutorCompleto.class })
     private String estado;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "biblioteca")

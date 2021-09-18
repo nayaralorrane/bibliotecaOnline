@@ -25,7 +25,7 @@ class LivroServiceTests {
         categorias.add("Comedia");
         categorias.add("Aventura");
         categorias.add("Misterio");
-        Livro livro = livroService.createLivro("Kiara aventureira", "Nayara", 120.00, "Nayara", "A", categorias);
+        Livro livro = livroService.createLivro("Kiara aventureira", "Nayara", 120.00, "Nayara", "A", 1, categorias);
         assertNotNull(livro);
     }
 

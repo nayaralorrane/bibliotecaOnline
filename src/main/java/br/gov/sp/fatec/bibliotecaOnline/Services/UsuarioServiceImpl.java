@@ -1,12 +1,10 @@
 package br.gov.sp.fatec.bibliotecaOnline.Services;
 
-import com.fasterxml.jackson.core.sym.Name;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.gov.sp.fatec.bibliotecaOnline.Entities.Usuario;
 import br.gov.sp.fatec.bibliotecaOnline.Entities.Permissoes;
+import br.gov.sp.fatec.bibliotecaOnline.Entities.Usuario;
 import br.gov.sp.fatec.bibliotecaOnline.Respositories.UsuarioRepository;
 import br.gov.sp.fatec.bibliotecaOnline.Respositories.PermissoesRepository;
 
@@ -25,7 +23,7 @@ public class UsuarioServiceImpl implements UsuarioService{
         if(permissaoEscolhida == null) return null;
 
         Usuario novoUsuario = new Usuario(nome, email, documento, senha);
-        novoUsuario.SetPermissao(permissaoEscolhida);
+        novoUsuario.setPermissao(permissaoEscolhida);
 
         usuarioRepository.save(novoUsuario);
         return novoUsuario;
@@ -40,10 +38,10 @@ public class UsuarioServiceImpl implements UsuarioService{
     public Usuario updateUsuario(Integer idUsuario, String nome, String email, String documento, String senha) {
         Usuario usuario = usuarioRepository.findById(idUsuario).get();
         if(usuario == null) return null;
-        usuario.SetNome(nome);
-        usuario.SetSenha(senha);
-        usuario.SetEmail(email);
-        usuario.SetDocumento(documento);
+        usuario.setNome(nome);
+        usuario.setSenha(senha);
+        usuario.setEmail(email);
+        usuario.setDocumento(documento);
         usuarioRepository.save(usuario);
         return usuario;
     }

@@ -7,15 +7,17 @@ import br.gov.sp.fatec.bibliotecaOnline.Entities.Categoria;
 import br.gov.sp.fatec.bibliotecaOnline.Entities.Livro;
 import br.gov.sp.fatec.bibliotecaOnline.Entities.Sessao;
 import br.gov.sp.fatec.bibliotecaOnline.Entities.Autor;
-
+import br.gov.sp.fatec.bibliotecaOnline.Entities.Biblioteca;
 import br.gov.sp.fatec.bibliotecaOnline.Respositories.CategoriaRepository;
 import br.gov.sp.fatec.bibliotecaOnline.Respositories.LivroRepository;
 import br.gov.sp.fatec.bibliotecaOnline.Respositories.SessaoRepository;
 import br.gov.sp.fatec.bibliotecaOnline.Respositories.AutorRepository;
+import br.gov.sp.fatec.bibliotecaOnline.Respositories.BibliotecaRepository;
 
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -32,40 +34,49 @@ public class LivroServiceImpl implements LivroService{
     private SessaoRepository sessaoRepository;
 
     @Autowired
+    private BibliotecaRepository bibliotecaRepository;
+
+    @Autowired
     private AutorRepository autorRepository;
 
     @Override
     @Transactional
-    public Livro createLivro(String nomeTitulo, String editora, Double preco, String autor, String sessao, List<String> categorias) {
+    public Livro createLivro(String nomeTitulo, String editora, Double preco, String autor, String sessao, Integer idBiblioteca, List<String> categorias) {
         HashSet<Categoria> listaCategorias = new HashSet<Categoria>();
         for (String categoria : categorias) {
             Categoria categoriaEscolhida = categoriaRepository.findByNomeCategoria(categoria);
             if (categoriaEscolhida == null){
                 categoriaEscolhida = new Categoria();
-                categoriaEscolhida.SetNomeCategoria(categoria);
+                categoriaEscolhida.setNomeCategoria(categoria);
                 categoriaRepository.save(categoriaEscolhida);
             } 
             listaCategorias.add(categoriaEscolhida);
         }
 
         Sessao sessaoEscolhida = sessaoRepository.findByNomeSessao(sessao);
+        Optional<Biblioteca> bibliotecaEscolhida = bibliotecaRepository.findById(idBiblioteca);
+        if(bibliotecaEscolhida.isEmpty()) {
+            return null;
+        }
+
         if(sessaoEscolhida == null) {
             sessaoEscolhida = new Sessao();
-            sessaoEscolhida.SetNomeSessao(sessao);
+            sessaoEscolhida.setNomeSessao(sessao);
+            sessaoEscolhida.setBiblioteca(bibliotecaEscolhida.get());
             sessaoRepository.save(sessaoEscolhida);
         }
 
         Autor autorEscolhido = autorRepository.findByAutNome(autor);
         if(autorEscolhido == null){
             autorEscolhido = new Autor();
-            autorEscolhido.SetAutNome(autor);
+            autorEscolhido.setAutNome(autor);
             autorRepository.save(autorEscolhido);
         }
 
         Livro novoLivro = new Livro(nomeTitulo, editora, preco);
-        novoLivro.SetCategorias(listaCategorias);
-        novoLivro.SetSessao(sessaoEscolhida);
-        novoLivro.SetAutor(autorEscolhido);
+        novoLivro.setCategorias(listaCategorias);
+        novoLivro.setSessao(sessaoEscolhida);
+        novoLivro.setAutor(autorEscolhido);
         livroRepository.save(novoLivro);
         return novoLivro;
     }
@@ -78,9 +89,9 @@ public class LivroServiceImpl implements LivroService{
     @Override
     public Livro updateLivro(Integer id, String nomeTitulo, String editora, Double preco) {
         Livro livro = livroRepository.findById(id).get();
-        livro.SetNomeTitulo(nomeTitulo);
-        livro.SetEditora(editora);
-        livro.SetPreco(preco);
+        livro.setNomeTitulo(nomeTitulo);
+        livro.setEditora(editora);
+        livro.setPreco(preco);
         livroRepository.save(livro);
         return livro;
     }
@@ -88,9 +99,8 @@ public class LivroServiceImpl implements LivroService{
     @Override
     public Boolean deleteLivro(Integer id) {
         livroRepository.deleteById(id);
-        Livro livro = livroRepository.findById(id).get();
-        if(livro == null) return true;
-        return false;
+        Optional<Livro> livro = livroRepository.findById(id);
+        return livro.isEmpty();
     }
 
     @Override
