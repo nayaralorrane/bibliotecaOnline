@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import java.util.Set;
 
 @Entity
@@ -18,12 +20,23 @@ public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_categoria")
+    @JsonView({ 
+        View.LivroCompleto.class, 
+        View.AutorCompleto.class,
+        View.CategoriaResumo.class 
+    })
     private Integer idCategoria;
 
     @Column(name = "nome_categoria")
+    @JsonView({ 
+        View.LivroCompleto.class, 
+        View.AutorCompleto.class,
+        View.CategoriaResumo.class 
+    })
     private String nomeCategoria;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "categorias")
+    @JsonView(View.CategoriaCompleto.class )
     private Set<Livro> livros;
 
     public Categoria(){
@@ -33,7 +46,6 @@ public class Categoria {
     public Categoria(String nomeCategoria){
         this.nomeCategoria = nomeCategoria;
     }
-
 
     public Integer getIdCategoria() {
         return idCategoria;
