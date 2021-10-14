@@ -2,8 +2,6 @@ package br.gov.sp.fatec.bibliotecaOnline.Controllers;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
 import com.fasterxml.jackson.annotation.JsonView;
 
 import org.springframework.beans.factory.annotation.Autowired;
