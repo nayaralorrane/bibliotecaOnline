@@ -1,6 +1,7 @@
 package br.gov.sp.fatec.bibliotecaOnline.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import br.gov.sp.fatec.bibliotecaOnline.Entities.Categoria;
@@ -41,6 +42,7 @@ public class LivroServiceImpl implements LivroService{
 
     @Override
     @Transactional
+    @PreAuthorize("hasRole('FUNCIONARIO')")
     public Livro createLivro(String nomeTitulo, String editora, Double preco, String autor, String sessao, Integer idBiblioteca, List<String> categorias) {
         HashSet<Categoria> listaCategorias = new HashSet<Categoria>();
         for (String categoria : categorias) {
@@ -82,11 +84,13 @@ public class LivroServiceImpl implements LivroService{
     }
 
     @Override
+    @PreAuthorize("isAutheticated()")
     public Livro readLivro(Integer id) {
         return livroRepository.findById(id).get();
     }
 
     @Override
+    @PreAuthorize("hasRole('FUNCIONARIO')")
     public Livro updateLivro(Integer id, String nomeTitulo, String editora, Double preco) {
         Livro livro = livroRepository.findById(id).get();
         livro.setNomeTitulo(nomeTitulo);
@@ -97,6 +101,7 @@ public class LivroServiceImpl implements LivroService{
     }
 
     @Override
+    @PreAuthorize("hasRole('FUNCIONARIO')")
     public Boolean deleteLivro(Integer id) {
         livroRepository.deleteById(id);
         Optional<Livro> livro = livroRepository.findById(id);
@@ -104,11 +109,13 @@ public class LivroServiceImpl implements LivroService{
     }
 
     @Override
+    @PreAuthorize("isAutheticated()")
     public List<Livro> getByAutorAndSessao(Integer idAutor, Integer idSessao){
         return livroRepository.findAllByAutorAndSessao(idAutor, idSessao);
     }
 
     @Override
+    @PreAuthorize("isAutheticated()")
     public List<Livro> getAllLivro() {
         return livroRepository.findAll();
     }

@@ -72,7 +72,7 @@ GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO bobackend;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO bobackend;
 
 INSERT INTO permissoes(nome_permissao) 
-VALUES('Funcionário'), ('Cliente');
+VALUES('ROLE_FUNCIONARIO'), ('ROLE_CLIENTE');
 
 INSERT INTO biblioteca(nome_biblioteca, cnpj, endereco, numero, cidade, estado)
 VALUES('Saraiva','00.000.000/0001-00','Avenida', 2, 'Jambeiro', 'São Paulo');

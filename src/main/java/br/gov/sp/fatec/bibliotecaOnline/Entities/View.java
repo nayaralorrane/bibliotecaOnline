@@ -13,4 +13,6 @@ public class View {
 
     public static class CategoriaCompleto extends CategoriaResumo {};
 
+    public static class Usuario {};
+
 }

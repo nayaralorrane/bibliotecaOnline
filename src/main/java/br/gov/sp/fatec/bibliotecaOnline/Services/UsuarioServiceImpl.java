@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.gov.sp.fatec.bibliotecaOnline.Entities.Permissoes;
@@ -20,12 +21,15 @@ public class UsuarioServiceImpl implements UsuarioService{
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public Usuario createUsuario(String nome, String email, String documento, String senha, String permissao) {
         Permissoes permissaoEscolhida = permissoesRepository.findByNomePermissao(permissao);
         if(permissaoEscolhida == null) return null;
 
-        Usuario novoUsuario = new Usuario(nome, email, documento, senha);
+        Usuario novoUsuario = new Usuario(nome, email, documento, passwordEncoder.encode(senha));
         novoUsuario.setPermissao(permissaoEscolhida);
 
         usuarioRepository.save(novoUsuario);

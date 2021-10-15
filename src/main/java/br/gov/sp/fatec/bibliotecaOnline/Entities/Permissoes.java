@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "permissoes")
 public class Permissoes {
@@ -20,6 +22,7 @@ public class Permissoes {
     @Column(name = "id_permissoes")
     private Integer idPermissoes;
 
+    @JsonView(View.Usuario.class)
     @Column(name = "nome_permissao")
     private String nomePermissao;
 

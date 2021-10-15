@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "usuario")
 public class Usuario {
@@ -20,18 +22,23 @@ public class Usuario {
     private Integer idUsuario;
 
     @Column(name = "nome")
+    @JsonView(View.Usuario.class)
     private String nome;
 
     @Column(name = "email", nullable = false)
+    @JsonView(View.Usuario.class)
     private String email;
 
     @Column(name = "documento")
+    @JsonView(View.Usuario.class)
     private String documento;
 
     @Column(name = "senha", nullable = false)
+    @JsonView(View.Usuario.class)
     private String senha;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JsonView(View.Usuario.class)
     @JoinColumn(name= "id_permissoes")
     private Permissoes permissao;
 
