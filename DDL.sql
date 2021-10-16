@@ -91,3 +91,6 @@ VALUES ('Comédia'), ('Mistério');
 
 INSERT INTO livro_categoria(id_livro, id_categoria)
 VALUES (1,1), (1,2);
+
+INSERT INTO usuario(id_permissoes, nome, email, senha, documento)
+VALUES (1, 'Admin', 'admin', '$2a$10$i3.Z8Yv1Fwl0I5SNjdCGkOTRGQjGvHjh/gMZhdc3e7LIovAklqM6C', '000');
