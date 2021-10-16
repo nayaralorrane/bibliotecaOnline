@@ -84,7 +84,7 @@ public class LivroServiceImpl implements LivroService{
     }
 
     @Override
-    @PreAuthorize("isAutheticated()")
+    @PreAuthorize("isAuthenticated()")
     public Livro readLivro(Integer id) {
         return livroRepository.findById(id).get();
     }
@@ -109,13 +109,13 @@ public class LivroServiceImpl implements LivroService{
     }
 
     @Override
-    @PreAuthorize("isAutheticated()")
+    @PreAuthorize("isAuthenticated()")
     public List<Livro> getByAutorAndSessao(Integer idAutor, Integer idSessao){
         return livroRepository.findAllByAutorAndSessao(idAutor, idSessao);
     }
 
     @Override
-    @PreAuthorize("isAutheticated()")
+    @PreAuthorize("isAuthenticated()")
     public List<Livro> getAllLivro() {
         return livroRepository.findAll();
     }
