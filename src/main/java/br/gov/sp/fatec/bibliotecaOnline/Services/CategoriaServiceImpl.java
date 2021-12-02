@@ -26,7 +26,7 @@ public class CategoriaServiceImpl implements CategoriaService {
     @Override
     public Categoria readCategoria(Integer id) {
         Optional<Categoria> categoriaEncontrada = categoriaRepository.findById(id);
-        if(categoriaEncontrada.isEmpty()){
+        if(!categoriaEncontrada.isPresent()) {
             throw new NotFoundException("Categoria não encontrada");
         }
 
@@ -36,7 +36,7 @@ public class CategoriaServiceImpl implements CategoriaService {
     @Override
     public Categoria updateCategoria(Integer id, String nomeCategoria) {
         Optional<Categoria> categoriaEncontrada = categoriaRepository.findById(id);
-        if(categoriaEncontrada.isEmpty()){
+        if(!categoriaEncontrada.isPresent()) {
             throw new NotFoundException("Categoria não encontrada");
         }
         Categoria categoria = categoriaEncontrada.get();
@@ -48,7 +48,7 @@ public class CategoriaServiceImpl implements CategoriaService {
     @Override
     public Boolean deleteCategoria(Integer id) {
         Optional<Categoria> categoriaEncontrada = categoriaRepository.findById(id);
-        if(categoriaEncontrada.isEmpty()){
+        if(!categoriaEncontrada.isPresent()) {
             throw new NotFoundException("Categoria não encontrada");
         }
         categoriaRepository.delete(categoriaEncontrada.get());

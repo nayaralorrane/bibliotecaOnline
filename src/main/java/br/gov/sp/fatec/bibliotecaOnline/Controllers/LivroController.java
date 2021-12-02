@@ -19,6 +19,7 @@ import br.gov.sp.fatec.bibliotecaOnline.Services.LivroService;
 import br.gov.sp.fatec.bibliotecaOnline.Entities.Livro;
 import br.gov.sp.fatec.bibliotecaOnline.Entities.View;
 import br.gov.sp.fatec.bibliotecaOnline.Entities.RequestModels.LivroRequest;
+import br.gov.sp.fatec.bibliotecaOnline.Entities.RequestModels.NomeTituloRequest;
 
 @RestController
 @CrossOrigin
@@ -46,6 +47,12 @@ public class LivroController{
         return livroService.readLivro(id);
     }
 
+    @PostMapping(value = "/search")
+    @JsonView(View.LivroCompleto.class)
+    public List<Livro> GetLivroBySearch(@RequestBody NomeTituloRequest search){
+        return livroService.getLivroBySearch(search.getSearch());
+    }
+
     @DeleteMapping(value = "/{id}")
     public Boolean DeleteLivro(@PathVariable(value = "id") Integer id){
         return livroService.deleteLivro(id);
@@ -53,7 +60,7 @@ public class LivroController{
 
     @PutMapping(value = "/update", consumes = MediaType.ALL_VALUE)
     @JsonView(View.LivroCompleto.class)
-    public Livro CreateLivro(@RequestBody Livro request){
+    public Livro UpdateLivro(@RequestBody Livro request){
        return livroService.updateLivro(request.getIdLivro(), request.getNomeTitulo(), request.getEditora(), request.getPreco());
     }
 }

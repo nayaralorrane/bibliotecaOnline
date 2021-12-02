@@ -13,4 +13,6 @@ public interface LivroRepository extends JpaRepository<Livro, Integer>{
     @Query("SELECT l FROM Livro l INNER JOIN  l.autor a INNER JOIN l.sessao s WHERE a.idAutor = :idAutor AND s.idSessao = :idSessao")
     public List<Livro> findAllByAutorAndSessao(Integer idAutor, Integer idSessao);
 
+    public List<Livro> findByNomeTituloLike(String nomeTitulo);
+
 }

@@ -26,7 +26,7 @@ public class AutorServiceImpl implements AutorService {
     @Override
     public Autor readAutor(Integer id) {
         Optional<Autor> autorEncontrado = autorRepository.findById(id);
-        if (autorEncontrado.isEmpty()) {
+        if (!autorEncontrado.isPresent()) {
             throw new NotFoundException("Autor não encontrado");
         }
         return autorEncontrado.get();
@@ -35,7 +35,7 @@ public class AutorServiceImpl implements AutorService {
     @Override
     public Autor updateAutor(Integer id, String autNome) {
         Optional<Autor> autorOptional = autorRepository.findById(id);
-        if (autorOptional.isEmpty()) {
+        if (!autorOptional.isPresent()) {
             throw new NotFoundException("Autor não encontrado");
         }
         Autor autorEncontrado = autorOptional.get();
@@ -47,7 +47,7 @@ public class AutorServiceImpl implements AutorService {
     @Override
     public Boolean deleteAutor(Integer id) {
         Optional<Autor> autorEncontrado = autorRepository.findById(id);
-        if (autorEncontrado.isEmpty()) {
+        if (!autorEncontrado.isPresent()) {
             throw new NotFoundException("Autor não encontrado");
         }
         autorRepository.delete(autorEncontrado.get());

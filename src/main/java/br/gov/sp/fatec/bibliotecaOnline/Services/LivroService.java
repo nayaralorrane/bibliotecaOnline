@@ -10,4 +10,5 @@ public interface LivroService {
     public Boolean deleteLivro(Integer id);
     public List<Livro> getByAutorAndSessao(Integer idAutor, Integer idSessao);
     public List<Livro> getAllLivro();
+    public List<Livro> getLivroBySearch(String search);
 }

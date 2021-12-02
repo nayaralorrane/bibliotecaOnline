@@ -57,7 +57,7 @@ public class LivroServiceImpl implements LivroService{
 
         Sessao sessaoEscolhida = sessaoRepository.findByNomeSessao(sessao);
         Optional<Biblioteca> bibliotecaEscolhida = bibliotecaRepository.findById(idBiblioteca);
-        if(bibliotecaEscolhida.isEmpty()) {
+        if(!bibliotecaEscolhida.isPresent()) {
             return null;
         }
 
@@ -105,7 +105,7 @@ public class LivroServiceImpl implements LivroService{
     public Boolean deleteLivro(Integer id) {
         livroRepository.deleteById(id);
         Optional<Livro> livro = livroRepository.findById(id);
-        return livro.isEmpty();
+        return !livro.isPresent();
     }
 
     @Override
@@ -119,5 +119,11 @@ public class LivroServiceImpl implements LivroService{
     public List<Livro> getAllLivro() {
         return livroRepository.findAll();
     }
+
+    @Override
+    @PreAuthorize("isAuthenticated()")
+    public List<Livro> getLivroBySearch(String search) {
+        return livroRepository.findByNomeTituloLike(search);
+    };
     
 }
