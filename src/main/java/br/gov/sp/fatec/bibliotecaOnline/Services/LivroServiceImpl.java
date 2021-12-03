@@ -123,7 +123,19 @@ public class LivroServiceImpl implements LivroService{
     @Override
     @PreAuthorize("isAuthenticated()")
     public List<Livro> getLivroBySearch(String search) {
-        return livroRepository.findByNomeTituloLike(search);
+        return livroRepository.findByNomeTituloContaining(search);
+    };
+
+    @Override
+    @PreAuthorize("isAuthenticated()")
+    public List<Livro> getLivroBySearchCategoria(String search) {
+        return livroRepository.findAllByCategoria(search);
+    };
+
+    @Override
+    @PreAuthorize("isAuthenticated()")
+    public List<Livro> getLivroBySearchAutor(String search) {
+        return livroRepository.findAllByAutor(search);
     };
     
 }

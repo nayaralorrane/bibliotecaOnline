@@ -11,4 +11,7 @@ public interface LivroService {
     public List<Livro> getByAutorAndSessao(Integer idAutor, Integer idSessao);
     public List<Livro> getAllLivro();
     public List<Livro> getLivroBySearch(String search);
+    public List<Livro> getLivroBySearchCategoria(String search);
+    public List<Livro> getLivroBySearchAutor(String search);
+    
 }

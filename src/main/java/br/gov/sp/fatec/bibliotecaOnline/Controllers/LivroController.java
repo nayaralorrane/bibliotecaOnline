@@ -53,6 +53,18 @@ public class LivroController{
         return livroService.getLivroBySearch(search.getSearch());
     }
 
+    @PostMapping(value = "/search/categoria")
+    @JsonView(View.LivroCompleto.class)
+    public List<Livro> GetLivroBySearchCategoria(@RequestBody NomeTituloRequest search){
+        return livroService.getLivroBySearchCategoria(search.getSearch());
+    }
+
+    @PostMapping(value = "/search/autor")
+    @JsonView(View.LivroCompleto.class)
+    public List<Livro> GetLivroBySearchAutor(@RequestBody NomeTituloRequest search){
+        return livroService.getLivroBySearchAutor(search.getSearch());
+    }
+
     @DeleteMapping(value = "/{id}")
     public Boolean DeleteLivro(@PathVariable(value = "id") Integer id){
         return livroService.deleteLivro(id);
