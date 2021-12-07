@@ -41,7 +41,8 @@ CREATE TABLE "usuario" (
   "nome" character varying,
   "email" character varying,
   "documento" character varying,
-  "senha" character varying
+  "senha" character varying,
+  "tentativa" int
 );
 
 CREATE TABLE "permissoes" (

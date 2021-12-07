@@ -5,6 +5,8 @@ public class LoginRequest {
     public String senha;
     public String permissao;
     public String token;
+    public String nome;
+    public Integer tentativas;
     
 
     public String getPermissao() {
@@ -13,6 +15,22 @@ public class LoginRequest {
 
     public void setPermissao(String permissao) {
         this.permissao = permissao;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Integer getTentativas() {
+        return tentativas;
+    }
+
+    public void setTentativas(Integer tentativas) {
+        this.tentativas = tentativas;
     }
 
     public String getToken() {

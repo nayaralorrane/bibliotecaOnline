@@ -42,6 +42,17 @@ public class UsuarioServiceImpl implements UsuarioService{
     }
 
     @Override
+    public Usuario getUsuarioByEmail(String email) {
+        return usuarioRepository.findByEmail(email);
+    }
+
+    @Override
+    public void incrementTetativa(Usuario user) {
+        user.setTentativa(user.getTentativa() + 1);
+        usuarioRepository.save(user);
+    }
+
+    @Override
     public Usuario updateUsuario(Integer idUsuario, String nome, String email, String documento, String senha) {
         Usuario usuario = usuarioRepository.findById(idUsuario).get();
         if(usuario == null) return null;

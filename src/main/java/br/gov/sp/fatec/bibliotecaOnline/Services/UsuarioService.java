@@ -9,4 +9,6 @@ public interface UsuarioService extends UserDetailsService {
     public Usuario readUsuario(Integer idUsuario);
     public Usuario updateUsuario(Integer idUsuario, String nome, String email, String documento, String senha);
     public Boolean deleteUsuario(Integer idUsuario);
+    public Usuario getUsuarioByEmail(String email);
+    public void incrementTetativa(Usuario user);
 }

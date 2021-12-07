@@ -47,10 +47,26 @@ public class UsuarioController {
     }
 
     @PostMapping(value = "/login")
-    public LoginRequest LoginUsuario(@RequestBody LoginRequest request) throws JsonProcessingException {
+    public LoginRequest LoginUsuario(@RequestBody LoginRequest request) throws JsonProcessingException, Exception  {
         Authentication auth = new UsernamePasswordAuthenticationToken(request.getEmail(), request.getSenha());
-        auth = authManager.authenticate(auth);
+        Usuario user = usuarioService.getUsuarioByEmail(request.getEmail());
+        
+        if(user == null) {
+            throw new Exception("Usuário não existente");
+        }
 
+        if(user.getTentativa() >= 3) {
+            throw new Exception("Usuário ultrapassou o limite de tentativas");
+        }
+
+        try {
+            auth = authManager.authenticate(auth);
+        } catch(Exception error) {
+            usuarioService.incrementTetativa(user);
+            throw error;
+        }
+
+        request.setNome(user.getNome());
         request.setSenha(null);
         request.setToken(JwtUtils.generateToken(auth));
         request.setPermissao(auth.getAuthorities().toArray()[0].toString());

@@ -37,6 +37,9 @@ public class Usuario {
     @JsonView(View.Usuario.class)
     private String senha;
 
+    @Column(name = "tentativa", nullable = true)
+    private Integer tentativa;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonView(View.Usuario.class)
     @JoinColumn(name= "id_permissoes")
@@ -51,6 +54,7 @@ public class Usuario {
         this.email = email;
         this.documento = documento;
         this.senha = senha;
+        this.tentativa = 0;
     }
 
     public Integer getIdUsuario() {
@@ -59,6 +63,14 @@ public class Usuario {
 
     public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+     public Integer getTentativa() {
+        return tentativa;
+    }
+
+    public void setTentativa(Integer tentativa) {
+        this.tentativa = tentativa;
     }
 
     public String getNome() {
