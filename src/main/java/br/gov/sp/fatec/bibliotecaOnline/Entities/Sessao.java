@@ -22,19 +22,19 @@ public class Sessao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_sessao")
-    @JsonView({ View.LivroCompleto.class, View.AutorCompleto.class })
+    @JsonView({ View.LivroCompleto.class, View.AutorCompleto.class, View.Biblioteca.class })
     private Integer idSessao;
 
     @Column(name = "nome_sessao")
-    @JsonView({ View.LivroCompleto.class, View.AutorCompleto.class })
+    @JsonView({ View.LivroCompleto.class, View.AutorCompleto.class, View.Biblioteca.class })
     private String nomeSessao;
 
     @Column(name = "estante")
-    @JsonView({ View.LivroCompleto.class, View.AutorCompleto.class })
+    @JsonView({ View.LivroCompleto.class, View.AutorCompleto.class, View.Biblioteca.class })
     private Integer estante;
 
     @Column(name = "prateleira")
-    @JsonView({ View.LivroCompleto.class, View.AutorCompleto.class })
+    @JsonView({ View.LivroCompleto.class, View.AutorCompleto.class, View.Biblioteca.class })
     private Integer prateleira;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "sessao")

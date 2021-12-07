@@ -43,7 +43,7 @@ public class LivroServiceImpl implements LivroService{
     @Override
     @Transactional
     @PreAuthorize("hasRole('FUNCIONARIO')")
-    public Livro createLivro(String nomeTitulo, String editora, Double preco, String autor, String sessao, Integer idBiblioteca, List<String> categorias) {
+    public Livro createLivro(String nomeTitulo, String editora, Double preco, String autor, String sessao, List<String> categorias) {
         HashSet<Categoria> listaCategorias = new HashSet<Categoria>();
         for (String categoria : categorias) {
             Categoria categoriaEscolhida = categoriaRepository.findByNomeCategoria(categoria);
@@ -56,7 +56,7 @@ public class LivroServiceImpl implements LivroService{
         }
 
         Sessao sessaoEscolhida = sessaoRepository.findByNomeSessao(sessao);
-        Optional<Biblioteca> bibliotecaEscolhida = bibliotecaRepository.findById(idBiblioteca);
+        Optional<Biblioteca> bibliotecaEscolhida = bibliotecaRepository.findById(sessaoEscolhida.getBiblioteca().getIdBiblioteca());
         if(!bibliotecaEscolhida.isPresent()) {
             return null;
         }
@@ -67,6 +67,7 @@ public class LivroServiceImpl implements LivroService{
             sessaoEscolhida.setBiblioteca(bibliotecaEscolhida.get());
             sessaoRepository.save(sessaoEscolhida);
         }
+        
 
         Autor autorEscolhido = autorRepository.findByAutNome(autor);
         if(autorEscolhido == null){
@@ -75,11 +76,15 @@ public class LivroServiceImpl implements LivroService{
             autorRepository.save(autorEscolhido);
         }
 
+        
+
         Livro novoLivro = new Livro(nomeTitulo, editora, preco);
         novoLivro.setCategorias(listaCategorias);
         novoLivro.setSessao(sessaoEscolhida);
         novoLivro.setAutor(autorEscolhido);
+        
         livroRepository.save(novoLivro);
+        
         return novoLivro;
     }
 

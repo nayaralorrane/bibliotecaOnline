@@ -29,10 +29,10 @@ public class LivroController{
     @Autowired
     private LivroService livroService;
 
-    @PostMapping(value = "/register", consumes = MediaType.ALL_VALUE)
+    @PostMapping(value = "/register")
     @JsonView(View.LivroCompleto.class)
     public Livro CreateLivro(@RequestBody LivroRequest request){
-       return livroService.createLivro(request.getLivro().getNomeTitulo(), request.getLivro().getEditora(), request.getLivro().getPreco(), request.getAutor().getAutNome(), request.getSessao().getNomeSessao(), request.getSessao().getBiblioteca().getIdBiblioteca(), request.getCategorias());
+        return livroService.createLivro(request.getLivro().getNomeTitulo(), request.getLivro().getEditora(), request.getLivro().getPreco(), request.getAutor().getAutNome(), request.getSessao().getNomeSessao(), request.getCategorias());
     }
 
     @GetMapping(value = "/")
