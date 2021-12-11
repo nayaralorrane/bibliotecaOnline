@@ -11,4 +11,6 @@ public interface UsuarioService extends UserDetailsService {
     public Boolean deleteUsuario(Integer idUsuario);
     public Usuario getUsuarioByEmail(String email);
     public void incrementTetativa(Usuario user);
+    public void resetTetativa(Usuario user);
+    
 }

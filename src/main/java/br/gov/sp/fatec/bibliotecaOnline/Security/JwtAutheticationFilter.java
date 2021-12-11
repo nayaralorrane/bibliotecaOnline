@@ -22,17 +22,13 @@ public class JwtAutheticationFilter extends GenericFilterBean{
            HttpServletRequest httpRequest = (HttpServletRequest) request;
            String autorization = httpRequest.getHeader(HttpHeaders.AUTHORIZATION);
            if(autorization != null) {
-               System.out.println("AUTORIZAÇÂO");
                Authentication credentials = JwtUtils.parseToken(autorization.replaceAll("Bearer ", ""));
                SecurityContextHolder.getContext().setAuthentication(credentials);
            }
-           System.out.println("SEM AUTORIZAÇÂO");
-
-           chain.doFilter(request, response);
         } catch (Throwable e) {
-            System.out.println(e.getMessage());
             HttpServletResponse httpResponse = (HttpServletResponse) response;
             httpResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
         }
+        chain.doFilter(request, response);
     }
 }

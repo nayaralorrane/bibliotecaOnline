@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
+import org.springframework.http.HttpStatus;
 
 import br.gov.sp.fatec.bibliotecaOnline.Entities.Usuario;
 import br.gov.sp.fatec.bibliotecaOnline.Entities.View;
@@ -21,6 +22,8 @@ import br.gov.sp.fatec.bibliotecaOnline.Entities.RequestModels.LoginRequest;
 import br.gov.sp.fatec.bibliotecaOnline.Entities.RequestModels.UsuarioRequest;
 import br.gov.sp.fatec.bibliotecaOnline.Security.JwtUtils;
 import br.gov.sp.fatec.bibliotecaOnline.Services.UsuarioService;
+import br.gov.sp.fatec.bibliotecaOnline.Exceptions.ExceedTentativasException;
+import br.gov.sp.fatec.bibliotecaOnline.Exceptions.UserNotFoundException;
 
 
 @RestController
@@ -47,23 +50,28 @@ public class UsuarioController {
     }
 
     @PostMapping(value = "/login")
-    public LoginRequest LoginUsuario(@RequestBody LoginRequest request) throws JsonProcessingException, Exception  {
+    public LoginRequest LoginUsuario(@RequestBody LoginRequest request) throws JsonProcessingException, ExceedTentativasException, UserNotFoundException  {
         Authentication auth = new UsernamePasswordAuthenticationToken(request.getEmail(), request.getSenha());
         Usuario user = usuarioService.getUsuarioByEmail(request.getEmail());
         
         if(user == null) {
-            throw new Exception("Usuário não existente");
+            throw new UserNotFoundException("Usuário não existente");
         }
 
         if(user.getTentativa() >= 3) {
-            throw new Exception("Usuário ultrapassou o limite de tentativas");
+            throw new ExceedTentativasException("Usuário ultrapassou o limite de tentativas");
         }
 
         try {
             auth = authManager.authenticate(auth);
+            usuarioService.resetTetativa(user);
         } catch(Exception error) {
             usuarioService.incrementTetativa(user);
-            throw error;
+            Integer tentativa = new Integer(3 - user.getTentativa());
+            if (tentativa == 0) {
+                throw new ExceedTentativasException("Senha incorreta, usuário bloqueado, contate o administrador");
+            }
+            throw new ExceedTentativasException("Senha incorreta, tentativas restantes = " + tentativa.toString());
         }
 
         request.setNome(user.getNome());

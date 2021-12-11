@@ -53,6 +53,12 @@ public class UsuarioServiceImpl implements UsuarioService{
     }
 
     @Override
+    public void resetTetativa(Usuario user) {
+        user.setTentativa(0);
+        usuarioRepository.save(user);
+    }
+
+    @Override
     public Usuario updateUsuario(Integer idUsuario, String nome, String email, String documento, String senha) {
         Usuario usuario = usuarioRepository.findById(idUsuario).get();
         if(usuario == null) return null;
@@ -78,7 +84,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Usuario user = usuarioRepository.findByEmail(email);
-        if(user == null){
+        if(user == null) {
             throw new UsernameNotFoundException("Usuário não encontrado");
         }
         return User.builder().username(email).password(user.getSenha()).authorities(user.getPermissao().getNomePermissao()).build();
